@@ -1,4 +1,5 @@
 sudo: required
+language: node_js
 services:
  - docker
 
@@ -8,3 +9,18 @@ before_install:
 script:
 # by default run test waits for input. --coverage flag shows the coverage and end the test
  - docker run react_app npm run test -- --coverage
+
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "us-west-2"
+#   app: "react_app"
+#   env: "Docker-env"
+#   bucket_name: "elasticbeanstalk-us-west-2-284729477389"
+#   bucket_path: "react_app"
+#   on:
+#   # this means only deploy when master gets new pr merged
+#     branch: master
+#   # access key & secret key are set in travis cli website taking from aws user permission
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key:
+#     secure: "$AWS_SECRET_KEY"
