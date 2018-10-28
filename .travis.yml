@@ -1,0 +1,10 @@
+sudo: required
+services:
+ - docker
+
+before_install:
+ - docker build -t react_app -f Dockerfile.dev .
+
+script:
+# by default run test waits for input. --coverage flag shows the coverage and end the test
+ - docker run react_app npm run test -- --coverage
